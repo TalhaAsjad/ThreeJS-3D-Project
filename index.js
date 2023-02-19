@@ -90,13 +90,6 @@ loader.load("./assets/Hoddiemodel/scene.gltf", function (gltf) {
     }
 
     renderer.render(scene, camera);
-
-    //   var newLeft = dragStartX + (event.pageX - startX);
-    //   var newTop = dragStartY + (event.pageY - startY);
-
-    //   // set the element position
-    //   dragElem.style.left = newLeft + "px";
-    //   dragElem.style.top = newTop + "px";
   }
 
   function onMouseUp(event) {
