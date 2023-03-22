@@ -1,8 +1,7 @@
-body{
-    margin:0;
-    height: 100vh;
-    display: block;
-
+body {
+  margin: 0;
+  height: 100vh;
+  display: block;
 }
 
 /* canvas{

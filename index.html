@@ -1,85 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="./main.css">
+    <link rel="stylesheet" href="./main.css" />
     <title>Document</title>
-</head>
-<body class="body">
-
+  </head>
+  <body class="body">
     <!-- <h1>Hoddie</h1> -->
-</body>
+  </body>
 
+  <script src="three.js"></script>
+  <script src="threex.domevents.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.7/dat.gui.min.js"></script>
+  <script type="module" src="./index.js"></script>
 
-<script src="three.js"></script>
-<script src="threex.domevents.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.7/dat.gui.min.js"></script>
-<script type="module" src="./index.js"></script>
+  <input type="color" id="colorPicker" style="display: none" />
 
-<script>
+  <script>
+    //     var scene = new THREE.Scene();
 
+    // var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000)
+    // camera.position.z = 5;
 
+    // var renderer = new THREE.WebGLRenderer({antialias: true});
+    // renderer.setClearColor("#e5e5e5");
+    // renderer.setSize(window.innerWidth, window.innerHeight);
 
-//     var scene = new THREE.Scene();
+    // document.body.appendChild(renderer.domElement)
 
-// var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000)
-// camera.position.z = 5;
+    // window.addEventListener('resize', () => {
+    //     renderer.setSize(window.innerWidth, window.innerHeight);
+    //     camera.aspect = window.innerWidth / window.innerHeight;
+    //     camera.updateProjectionMatrix();
+    // })
 
-// var renderer = new THREE.WebGLRenderer({antialias: true});
-// renderer.setClearColor("#e5e5e5");
-// renderer.setSize(window.innerWidth, window.innerHeight);
+    // var geometry = new THREE.BoxGeometry(1,1,1);
+    // const material = new THREE.MeshLambertMaterial({color: 0xFFCC00});
+    // var mesh = new THREE.Mesh(geometry, material);
 
-// document.body.appendChild(renderer.domElement)
+    // const domEvents = new THREEx.DomEvents(camera, renderer.domElement)
 
-// window.addEventListener('resize', () => {
-//     renderer.setSize(window.innerWidth, window.innerHeight);
-//     camera.aspect = window.innerWidth / window.innerHeight;
-//     camera.updateProjectionMatrix(); 
-// })
+    // domEvents.addEventListener(mesh, 'click', event=>{
+    //     console.log('haseeb');
+    // })
 
+    // // mesh.position.set(2,2,1)
+    // // mesh.rotation.set(45,0,0)
 
-// var geometry = new THREE.BoxGeometry(1,1,1);
-// const material = new THREE.MeshLambertMaterial({color: 0xFFCC00});
-// var mesh = new THREE.Mesh(geometry, material);
+    // scene.add(mesh);
 
-// const domEvents = new THREEx.DomEvents(camera, renderer.domElement)
+    // var light = new THREE.PointLight(0xFFFFFF, 1, 500);
+    // light.position.set(10,0,25);
+    // scene.add(light);
 
-// domEvents.addEventListener(mesh, 'click', event=>{
-//     console.log('haseeb');
-// })
+    // var render = function(){
+    //     requestAnimationFrame(render);
 
+    //     mesh.rotation.x += 0.01;
+    //     mesh.rotation.y += 0.01;
 
-// // mesh.position.set(2,2,1)
-// // mesh.rotation.set(45,0,0)
+    //  renderer.render(scene, camera);
+    // }
 
-// scene.add(mesh);
+    // render();
+  </script>
+  <!-- <script type="module" src="./index.js"></script> -->
+  <!-- <script type="module" src="./first.js"></script> -->
 
-// var light = new THREE.PointLight(0xFFFFFF, 1, 500);
-// light.position.set(10,0,25);
-// scene.add(light);
-
-// var render = function(){
-//     requestAnimationFrame(render);
-
-//     mesh.rotation.x += 0.01;
-//     mesh.rotation.y += 0.01;
-
-
-//  renderer.render(scene, camera);
-// }
-
-// render();
-
-</script>
-<!-- <script type="module" src="./index.js"></script> -->
-<!-- <script type="module" src="./first.js"></script> -->
-
-
-<!-- <script src="three.min.js"></script> -->
-<!-- <script src="GLTFLoader.js"></script> -->
-<!-- <script src="/OrbitControls.js"></script> -->
-
+  <!-- <script src="three.min.js"></script> -->
+  <!-- <script src="GLTFLoader.js"></script> -->
+  <!-- <script src="/OrbitControls.js"></script> -->
 </html>

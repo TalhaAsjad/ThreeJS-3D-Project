@@ -24,7 +24,7 @@ document.body.appendChild(renderer.domElement);
 
 scene.background = new THREE.Color(0x0000ff);
 
-camera.position.set(0, 1.5, 1);
+camera.position.set(0, 0, 1.5);
 
 // camera.lookAt(0,1,0);
 
@@ -39,8 +39,7 @@ window.addEventListener("resize", () => {
 let gui = new dat.GUI();
 
 const options = {
-  Cuff: 0xf0f0f0,
-  Hoddie: 0xf0f0f0,
+  Color: 0xf0f0f0,
 };
 
 const domEvents = new THREEx.DomEvents(camera, renderer.domElement);
@@ -49,26 +48,36 @@ const loader = new GLTFLoader();
 
 var sceneObj;
 
-loader.load("./assets/Hoddiemodel/scene.gltf", function (gltf) {
+// loader.load("./assets/Hoddiemodel/scene.gltf", function (gltf) {
+loader.load("./assets/Tshirt/T-shirt.gltf", function (gltf) {
   sceneObj = gltf.scene;
+
+  // console.log(sceneObj);
 
   scene.add(sceneObj);
   renderer.render(scene, camera);
 
-  //   console.log(
-  //     sceneObj.children[0].children[0].children[0].children[0].children[0]
-  //       .children
-  //   );
+  // console.log(
+  //   sceneObj.children[0].children[0].children[0].children[0].children[0]
+  //     .children
+  // );
+
+  sceneObj.getObjectByName("Plane_Plane008_1").material.color.setHex(0x00000);
+  sceneObj.getObjectByName("Plane_Plane008_2").material.color.setHex(0xfffff);
+  sceneObj.getObjectByName("Plane_Plane008_3").material.color.setHex(0xf0f0f);
+
+  scene.add(sceneObj);
+  renderer.render(scene, camera);
 
   gui.addColor(options, "Cuff").onChange(function (e) {
-    sceneObj.getObjectByName("Object_16").material.color.setHex(e);
+    sceneObj.getObjectByName("Plane_Plane008_2").material.color.setHex(e);
     renderer.render(scene, camera);
   });
 
-  gui.addColor(options, "Hoddie").onChange(function (e) {
-    sceneObj.getObjectByName("Object_12").material.color.setHex(e);
-    renderer.render(scene, camera);
-  });
+  // gui.addColor(options, "Hoddie").onChange(function (e) {
+  //   sceneObj.getObjectByName("Plane_Plane008_1").material.color.setHex(e);
+  //   renderer.render(scene, camera);
+  // });
 
   let startX;
 
@@ -97,6 +106,18 @@ loader.load("./assets/Hoddiemodel/scene.gltf", function (gltf) {
     document.removeEventListener("mousemove", onMouseMove);
     document.removeEventListener("mouseup", onMouseUp);
   }
+
+  domEvents.addEventListener(
+    sceneObj.getObjectByName("Plane_Plane008_1"),
+    "click",
+    function (event) {
+      $("#colorPicker").trigger("click");
+    }
+  );
+
+  $("#colorPicker").change(function () {
+    sceneObj.getObjectByName("Plane_Plane008_1").material.color.setHex();
+  });
 });
 
 // function animate() {
