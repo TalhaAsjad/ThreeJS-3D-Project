@@ -115,9 +115,9 @@ loader.load("./assets/Tshirt/T-shirt.gltf", function (gltf) {
     }
   );
 
-  $("#colorPicker").change(function () {
-    sceneObj.getObjectByName("Plane_Plane008_1").material.color.setHex();
-  });
+  //   $("#colorPicker").change(function () {
+  //     sceneObj.getObjectByName("Plane_Plane008_1").material.color.setHex();
+  //   });
 });
 
 // function animate() {
