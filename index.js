@@ -22,7 +22,7 @@ renderer.setClearColor("#0000FF");
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
-scene.background = new THREE.Color(0x0000ff);
+scene.background = new THREE.Color(0xd6d6d6);
 
 camera.position.set(0, 0, 1.5);
 
@@ -39,8 +39,17 @@ window.addEventListener("resize", () => {
 let gui = new dat.GUI();
 
 const options = {
-  Color: 0xf0f0f0,
+  "Right Cuff": 0xf0f0f0,
+  "Left Cuff": 0xf0f0f0,
+  Collar: 0xf0f0f0,
+  Body: 0xf0f0f0,
 };
+
+// gui.addColor(options, "Cuff");
+// gui.addColor(options, "Collar");
+// gui.addColor(options, "Body");
+
+// gui.hide();
 
 const domEvents = new THREEx.DomEvents(camera, renderer.domElement);
 
@@ -49,10 +58,10 @@ const loader = new GLTFLoader();
 var sceneObj;
 
 // loader.load("./assets/Hoddiemodel/scene.gltf", function (gltf) {
-loader.load("./assets/Tshirt/T-shirt.gltf", function (gltf) {
+loader.load("./assets/Tshirt/T-shirt-indcuff.gltf", function (gltf) {
   sceneObj = gltf.scene;
 
-  // console.log(sceneObj);
+  console.log(sceneObj);
 
   scene.add(sceneObj);
   renderer.render(scene, camera);
@@ -64,16 +73,60 @@ loader.load("./assets/Tshirt/T-shirt.gltf", function (gltf) {
 
   sceneObj.getObjectByName("Plane_Plane008_1").material.color.setHex(0x00000);
   sceneObj.getObjectByName("Plane_Plane008_2").material.color.setHex(0xfffff);
-  sceneObj.getObjectByName("Plane_Plane008_3").material.color.setHex(0xf0f0f);
+  sceneObj.getObjectByName("Plane_Plane008_3").material.color.setHex(0xf0ff0);
+  sceneObj.getObjectByName("Plane_Plane008_4").material.color.setHex(0xf1f0f4);
 
   scene.add(sceneObj);
   renderer.render(scene, camera);
 
-  gui.addColor(options, "Cuff").onChange(function (e) {
-    sceneObj.getObjectByName("Plane_Plane008_2").material.color.setHex(e);
+  // domEvents.addEventListener(
+  //   sceneObj.getObjectByName("Plane_Plane008_1"),
+  //   "click",
+  //   function (event) {
+  // (options, "Body").onChange(function (e) {
+  //   console.log("check");
+  //   sceneObj.getObjectByName("Plane_Plane008_1").material.color.setHex(e);
+  //   renderer.render(scene, camera);
+  // });
+  // }
+  // );
+
+  gui.addColor(options, "Body").onChange(function (e) {
+    sceneObj.getObjectByName("Plane_Plane008_1").material.color.setHex(e);
     renderer.render(scene, camera);
   });
 
+  // domEvents.addEventListener(
+  //   sceneObj.getObjectByName("Plane_Plane008_2"),
+  //   "click",
+  //   function (event) {
+  gui.addColor(options, "Left Cuff").onChange(function (e) {
+    sceneObj.getObjectByName("Plane_Plane008_2").material.color.setHex(e);
+    renderer.render(scene, camera);
+  });
+  //   }
+  // );
+
+  // domEvents.addEventListener(
+  //   sceneObj.getObjectByName("Plane_Plane008_3"),
+  //   "click",
+  //   function (event) {
+  gui.addColor(options, "Right Cuff").onChange(function (e) {
+    sceneObj.getObjectByName("Plane_Plane008_3").material.color.setHex(e);
+    renderer.render(scene, camera);
+  });
+  //   }
+  // );
+
+  gui.addColor(options, "Collar").onChange(function (e) {
+    sceneObj.getObjectByName("Plane_Plane008_4").material.color.setHex(e);
+    renderer.render(scene, camera);
+  });
+
+  //   gui.addColor(options, "Color").onChange(function (e) {
+  //     sceneObj.getObjectByName("Plane_Plane008_2").material.color.setHex(e);
+  //     renderer.render(scene, camera);
+  //   });
   // gui.addColor(options, "Hoddie").onChange(function (e) {
   //   sceneObj.getObjectByName("Plane_Plane008_1").material.color.setHex(e);
   //   renderer.render(scene, camera);
@@ -93,9 +146,9 @@ loader.load("./assets/Tshirt/T-shirt.gltf", function (gltf) {
     // calculate the new element position based on the drag distance
 
     if (startX > event.screenX) {
-      sceneObj.rotation.y -= 0.03;
+      sceneObj.rotation.y -= 0.05;
     } else {
-      sceneObj.rotation.y += 0.03;
+      sceneObj.rotation.y += 0.05;
     }
 
     renderer.render(scene, camera);
@@ -107,18 +160,19 @@ loader.load("./assets/Tshirt/T-shirt.gltf", function (gltf) {
     document.removeEventListener("mouseup", onMouseUp);
   }
 
-  domEvents.addEventListener(
-    sceneObj.getObjectByName("Plane_Plane008_1"),
-    "click",
-    function (event) {
-      $("#colorPicker").trigger("click");
-    }
-  );
-
-  //   $("#colorPicker").change(function () {
-  //     sceneObj.getObjectByName("Plane_Plane008_1").material.color.setHex();
+  //   $("#colorPicker").change(function (e) {
+  //     e = $(this).val();
+  //     console.log(e);
+  //     sceneObj.getObjectByName("Plane_Plane008_2").material.color.setHex(e);
+  //     debugger;
+  //     renderer.render(scene, camera);
   //   });
 });
+
+// gui.addColor(options, "Color").onChange(function (e) {
+//   sceneObj.getObjectByName("Plane_Plane008_2").material.color.setHex(e);
+//   renderer.render(scene, camera);
+// });
 
 // function animate() {
 // requestAnimationFrame(animate);
