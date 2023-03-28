@@ -39,10 +39,11 @@ window.addEventListener("resize", () => {
 let gui = new dat.GUI();
 
 const options = {
+  "Body Front": 0xf0f0f0,
+  "Body Back": 0xf0f0f0,
   "Right Cuff": 0xf0f0f0,
   "Left Cuff": 0xf0f0f0,
   Collar: 0xf0f0f0,
-  Body: 0xf0f0f0,
 };
 
 // gui.addColor(options, "Cuff");
@@ -58,7 +59,7 @@ const loader = new GLTFLoader();
 var sceneObj;
 
 // loader.load("./assets/Hoddiemodel/scene.gltf", function (gltf) {
-loader.load("./assets/Tshirt/T-shirt-indcuff.gltf", function (gltf) {
+loader.load("./assets/Tshirt/t-shirt-f-b.gltf", function (gltf) {
   sceneObj = gltf.scene;
 
   console.log(sceneObj);
@@ -75,6 +76,7 @@ loader.load("./assets/Tshirt/T-shirt-indcuff.gltf", function (gltf) {
   sceneObj.getObjectByName("Plane_Plane008_2").material.color.setHex(0xfffff);
   sceneObj.getObjectByName("Plane_Plane008_3").material.color.setHex(0xf0ff0);
   sceneObj.getObjectByName("Plane_Plane008_4").material.color.setHex(0xf1f0f4);
+  sceneObj.getObjectByName("Plane_Plane008_5").material.color.setHex(0x5a5a5a);
 
   scene.add(sceneObj);
   renderer.render(scene, camera);
@@ -91,8 +93,13 @@ loader.load("./assets/Tshirt/T-shirt-indcuff.gltf", function (gltf) {
   // }
   // );
 
-  gui.addColor(options, "Body").onChange(function (e) {
+  gui.addColor(options, "Body Front").onChange(function (e) {
     sceneObj.getObjectByName("Plane_Plane008_1").material.color.setHex(e);
+    renderer.render(scene, camera);
+  });
+
+  gui.addColor(options, "Body Back").onChange(function (e) {
+    sceneObj.getObjectByName("Plane_Plane008_5").material.color.setHex(e);
     renderer.render(scene, camera);
   });
 
@@ -146,9 +153,9 @@ loader.load("./assets/Tshirt/T-shirt-indcuff.gltf", function (gltf) {
     // calculate the new element position based on the drag distance
 
     if (startX > event.screenX) {
-      sceneObj.rotation.y -= 0.05;
+      sceneObj.rotation.y -= 0.07;
     } else {
-      sceneObj.rotation.y += 0.05;
+      sceneObj.rotation.y += 0.07;
     }
 
     renderer.render(scene, camera);
