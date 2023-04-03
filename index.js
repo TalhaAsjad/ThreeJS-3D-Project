@@ -59,7 +59,7 @@ const loader = new GLTFLoader();
 var sceneObj;
 
 // loader.load("./assets/Hoddiemodel/scene.gltf", function (gltf) {
-loader.load("./assets/Tshirt/t-shirt-f-b.gltf", function (gltf) {
+loader.load("./assets/Tshirt/test.gltf", function (gltf) {
   sceneObj = gltf.scene;
 
   console.log(sceneObj);
@@ -72,11 +72,13 @@ loader.load("./assets/Tshirt/t-shirt-f-b.gltf", function (gltf) {
   //     .children
   // );
 
-  sceneObj.getObjectByName("Plane_Plane008_1").material.color.setHex(0x00000);
-  sceneObj.getObjectByName("Plane_Plane008_2").material.color.setHex(0xfffff);
-  sceneObj.getObjectByName("Plane_Plane008_3").material.color.setHex(0xf0ff0);
-  sceneObj.getObjectByName("Plane_Plane008_4").material.color.setHex(0xf1f0f4);
-  sceneObj.getObjectByName("Plane_Plane008_5").material.color.setHex(0x5a5a5a);
+  sceneObj.getObjectByName("right-stitch").material.color.setHex(0x00000);
+  sceneObj.getObjectByName("left-stitch").material.color.setHex(0x8300ff);
+  sceneObj.getObjectByName("T-shirt_1").material.color.setHex(0x00000);
+  sceneObj.getObjectByName("T-shirt_2").material.color.setHex(0xf0f0f0);
+  sceneObj.getObjectByName("T-shirt_3").material.color.setHex(0xf0f0f);
+  sceneObj.getObjectByName("T-shirt_4").material.color.setHex(0xff0000);
+  sceneObj.getObjectByName("T-shirt_5").material.color.setHex(0xff1e);
 
   scene.add(sceneObj);
   renderer.render(scene, camera);
@@ -94,7 +96,7 @@ loader.load("./assets/Tshirt/t-shirt-f-b.gltf", function (gltf) {
   // );
 
   gui.addColor(options, "Body Front").onChange(function (e) {
-    sceneObj.getObjectByName("Plane_Plane008_1").material.color.setHex(e);
+    sceneObj.getObjectByName("right-stitch").material.color.setHex(e);
     renderer.render(scene, camera);
   });
 
